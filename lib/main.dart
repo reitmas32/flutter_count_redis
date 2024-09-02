@@ -56,7 +56,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Container with redis'),
+          title: const Text('Counter with Redis'),
         ),
         body: Center(
           child: Column(
@@ -64,7 +64,7 @@ class MyAppState extends State<MyApp> {
             children: [
               Text(
                 '$count',
-                style: const TextStyle(fontSize: 24),
+                style: const TextStyle(fontSize: 45),
               ),
             ],
           ),
