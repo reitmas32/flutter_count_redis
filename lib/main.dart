@@ -16,7 +16,6 @@ class MyAppState extends State<MyApp> {
   int count = 0;
 
   Future<void> readData() async {
-
     // Create Conection
     Command cmd = await RedisConnection().connect('localhost', 6379);
     final pubsub = PubSub(cmd);
@@ -24,8 +23,7 @@ class MyAppState extends State<MyApp> {
     // Susbribe to topic
     pubsub.subscribe(["count"]);
     final stream = pubsub.getStream();
-    var streamWithoutErrors =
-        stream.handleError((e) => print("$e"));
+    var streamWithoutErrors = stream.handleError((e) => print("$e"));
 
     // read Messages
     await for (final msg in streamWithoutErrors) {
@@ -56,7 +54,10 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Counter with Redis'),
+          title: const Text(
+            'Counter with Redis',
+            style: TextStyle(fontSize: 45),
+          ),
         ),
         body: Center(
           child: Column(
@@ -64,7 +65,7 @@ class MyAppState extends State<MyApp> {
             children: [
               Text(
                 '$count',
-                style: const TextStyle(fontSize: 45),
+                style: const TextStyle(fontSize: 80),
               ),
             ],
           ),
